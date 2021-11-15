@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Интернет-магазин</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <div class="logo">Интернет-магазин</div>
-    <div class="btn-cart-container">
-        <button class="btn-cart" type="button">Корзина</button>
-        <div class="cart hidden"></div>
-    </div>
-</header>
-<main>
-    <div class="products"></div>
-</main>
-<script src="./js/main.js"></script>
+<div id="app">
+    <header>
+        <div class="logo">Интернет-магазин</div>
+        <div class="cart">
+            <search @filter-goods="filterGoods"></search>
+            <button class="btn-cart" type="button" @click="show = !show">Корзина
+            </button>
+            <cart :show="show" :cart="cart"></cart>
+        </div>
+    </header>
+    <main>
+        <products :products="products" :img-catalog="imgCatalog"
+                  @add-product="addProduct"></products>
+        <error v-if="error"></error>
+    </main>
+</div>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/components/Search.js"></script>
+<script src="js/components/Cart.js"></script>
+<script src="js/main.js"></script>
+<script src="js/components/Products.js"></script>
+<script src="js/components/Error.js"></script>
 </body>
 </html>
