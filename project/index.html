@@ -11,43 +11,24 @@
     <header>
         <div class="logo">Интернет-магазин</div>
         <div class="cart">
-            <form action="#" class="search-form">
-                <input type="text" class="search-field">
-                <button class="btn-search" type="submit"
-                        @click="filterGoods">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <search @filter-goods="filterGoods"></search>
             <button class="btn-cart" type="button" @click="show = !show">Корзина
             </button>
-            <div v-show="show" class="cart-block">
-                <div class="cart-item" v-for="item of cart"
-                     :key="cart.id_product">
-                    <img src="https://via.placeholder.com/200x150" class="cart-img"/>
-                    <div class="cart-text">
-                        <h3>{{ item.product_name }}</h3>
-                        <p>{{ item.price }}₽</p>
-                        <p>товар {{ item.quantity }}</p>
-                    </div>
-                </div>
-            </div>
+            <cart :show="show" :cart="cart"></cart>
         </div>
     </header>
     <main>
-        <div class="products">
-            <div class="product-item" v-for="product of products" :key="product.id_product">
-                <img :src="imgCatalog" alt="Some img">
-                <div class="desc">
-                    <h3>{{product.product_name}}</h3>
-                    <p>{{product.price}}₽</p>
-                    <button class="buy-btn" @click="addProduct(product)">Купить</button>
-                </div>
-            </div>
-        </div>
+        <products :products="products" :img-catalog="imgCatalog"
+                  @add-product="addProduct"></products>
+        <error v-if="error"></error>
     </main>
 </div>
 <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/components/Search.js"></script>
+<script src="js/components/Cart.js"></script>
 <script src="js/main.js"></script>
+<script src="js/components/Products.js"></script>
+<script src="js/components/Error.js"></script>
 </body>
 </html>
