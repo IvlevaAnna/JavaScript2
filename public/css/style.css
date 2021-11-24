@@ -66,6 +66,8 @@ p {
     padding: 15px
 }
 .cart{
+    display: flex;
+    gap: 20px;
     position: relative;
 }
 
@@ -119,7 +121,7 @@ p {
     display: flex;
     flex-direction: column;
 }
-.buy-btn{
+.buy-btn, del-btn{
     margin-top: 5px;
     color: #191c24;
     background-color: #bdf329;
